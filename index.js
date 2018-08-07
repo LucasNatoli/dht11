@@ -2,3 +2,13 @@ const SerialPort = require('serialport')
 const port = new SerialPort('/dev/ttyACM0', () => {
   console.log('Port Opened');
 });
+const parsers = SerialPort.parsers;
+
+const parser = new parsers.Readline({
+  delimiter: '\n'
+ 
+});
+
+port.pipe(parser);
+
+parser.on('data', console.log);
