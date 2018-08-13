@@ -1,10 +1,20 @@
 'use strict';
 
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mainDB', null, null, {
-    dialect: "sqlite",
-    storage: './homebox.db'
-})
+const sequelize = new Sequelize(
+    'cutltibox',
+    'root',
+    'Kalama2018',
+    {
+        host: 'localhost',
+        port: 3306,
+        dialect: 'mysql',
+        define: {
+            underscored: true
+        },
+        logging: false
+    }
+);
 
 var db = {};
 
