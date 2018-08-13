@@ -10,10 +10,13 @@ const parser = new parsers.Readline({
 function ReadSerialData(data){
   console.log(data)
   try {
-    var newRead = JSON.parse(data)
+    var newRead = data.split(",")
+    var t = newRead[0]
+    var h = newRead[1]
+
     var record = Db.dht11.build({
-      temp: data.temperature,
-      hum: data.humidity
+      temp: t,
+      hum: h
     })
   record.save();
   } catch (e) {
