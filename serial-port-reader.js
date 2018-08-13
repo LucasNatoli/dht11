@@ -14,7 +14,7 @@ function ReadSerialData(data){
     var t = newRead[0]
     var h = newRead[1]
 
-    var record = Db.dht11.build({
+    var record = db.dht11.build({
       temp: t,
       hum: h
     })
