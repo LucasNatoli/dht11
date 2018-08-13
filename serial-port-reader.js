@@ -9,11 +9,16 @@ const parser = new parsers.Readline({
 
 function ReadSerialData(data){
   console.log(data)
-/*   var record = Db.dht11.build({
-    temp: 20.02,
-    hum: 14.00
-  })
-  record.save(); */
+  try {
+    var newRead = JSON.parse(data)
+    var record = Db.dht11.build({
+      temp: data.temperature,
+      hum: data.humidity
+    })
+  record.save();
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 db.sequelize.sync().then(() => {
