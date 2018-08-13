@@ -1,3 +1,7 @@
+var express = require('express');
+const app = express()
+app.use(express.static('pwa'));
+
 function ReadSerialData(data){
   console.log(data)
   //do stuff here
@@ -18,3 +22,7 @@ const parser = new parsers.Readline({
 
 port.pipe(parser)
 parser.on('data', ReadSerialData)
+
+app.listen(1280, () => {
+  console.log('Raz0r listening on port:', 1280)
+})
