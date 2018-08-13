@@ -10,7 +10,7 @@ const parser = new parsers.Readline({
 function ReadSerialData(data){
   console.log(data)
   try {
-    var newRead = data.split(",")
+    var newRead = data.split(",") //TODO: Check decimales
     var t = newRead[0]
     var h = newRead[1]
 
