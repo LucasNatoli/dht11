@@ -2,9 +2,9 @@
 
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(
-    'cutltibox',
-    'root',
-    'Ciao.1234',
+    'cultibox',
+    'cultibox',
+    'cultibox',
     {
         host: 'localhost',
         port: 3306,

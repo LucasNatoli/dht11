@@ -1,4 +1,5 @@
-const Db = require('./db')
+
+const db = require('./db')
 const SerialPort = require('serialport')
 const parsers = SerialPort.parsers
 
@@ -8,14 +9,14 @@ const parser = new parsers.Readline({
 
 function ReadSerialData(data){
   console.log(data)
-  var record = Db.dht11.build({
+/*   var record = Db.dht11.build({
     temp: 20.02,
     hum: 14.00
   })
-  record.save();
+  record.save(); */
 }
 
-Db.sequelize.sync().then(() => {
+db.sequelize.sync().then(() => {
   console.log('db sync ok')
   var port = new SerialPort(
     '/dev/ttyACM0', 
@@ -25,6 +26,5 @@ Db.sequelize.sync().then(() => {
       parser.on('data', ReadSerialData)
     }
   )
-   
 })
 
