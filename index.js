@@ -6,22 +6,24 @@ function ReadSerialData(data){
   console.log(data)
   //do stuff here
 }
-
-app.listen(3000, () => {
-  console.log('Cultibox wer service running')
-  const SerialPort = require('serialport')
-  const parsers = SerialPort.parsers
-  const port = new SerialPort(
-    '/dev/ttyACM0', 
-    () => {
-      console.log('Escuchando DHT11 en /dev/ttyACM0')
-    }
-  )
-    
-  const parser = new parsers.Readline({
-    delimiter: '\n'
-  })
+const SerialPort = require('serialport')
+const parsers = SerialPort.parsers
+const port = new SerialPort(
+  '/dev/ttyACM0', 
+  () => {
+    console.log('Escuchando DHT11 en /dev/ttyACM0')
+  }
+)
   
-  port.pipe(parser)
-  parser.on('data', ReadSerialData)  
+
+const parser = new parsers.Readline({
+  delimiter: '\n'
 })
+
+port.pipe(parser)
+parser.on('data', ReadSerialData)
+
+/* app.listen(3000, () => {
+  console.log('Cultibox wer service running')
+  
+}) */
