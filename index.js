@@ -12,7 +12,7 @@ const parsers = SerialPort.parsers
 const port = new SerialPort(
   '/dev/ttyACM0', 
   () => {
-    console.log('Port Opened')
+    console.log('Escuchando DHT11 en /dev/ttyACM0')
   }
 )
 
@@ -23,6 +23,6 @@ const parser = new parsers.Readline({
 port.pipe(parser)
 parser.on('data', ReadSerialData)
 
-app.listen(1280, () => {
-  console.log('Raz0r listening on port:', 1280)
+app.listen(3000, () => {
+  console.log('Cultibox wer service running')
 })
