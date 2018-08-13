@@ -1,5 +1,6 @@
 'use strict';
 
+const env = process.env
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(
     'cultibox',
@@ -16,10 +17,10 @@ const sequelize = new Sequelize(
     }
 );
 
-var db = {};
+var db = {}
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
+db.Sequelize = Sequelize
+db.sequelize = sequelize
 
 db.dht11 = require('./dht11')(sequelize, Sequelize)
 
